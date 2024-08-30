@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/views/widget/category_list_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({
@@ -27,6 +28,9 @@ class HomeView extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      body: const CustomScrollView(
+        slivers: [CategoryListView()],
       ),
     );
   }
