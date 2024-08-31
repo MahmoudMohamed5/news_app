@@ -1,9 +1,9 @@
 class ArticlesModel {
-  final String title;
-  final String description;
-  final String urlToImage;
+  final String? title;
+  final String? description;
+  final String? urlToImage;
 
-  ArticlesModel({
+ const ArticlesModel({
     required this.title,
     required this.description,
     required this.urlToImage,

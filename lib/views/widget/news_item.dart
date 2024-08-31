@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/models/articles_model.dart';
 
 class NewsItem extends StatelessWidget {
   const NewsItem({
     super.key,
+    required this.articlesModel,
   });
-
+  final ArticlesModel articlesModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,9 +15,7 @@ class NewsItem extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: CachedNetworkImage(
-            
-            imageUrl:
-                'https://static01.nyt.com/images/2024/08/29/multimedia/29mideast-briefing-carousel-wgzl/29mideast-briefing-carousel-wgzl-threeByTwoMediumAt2X.jpg?quality=75&auto=webp',
+            imageUrl: articlesModel.urlToImage ?? '',
             placeholder: (context, url) => const CircularProgressIndicator(),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
@@ -23,22 +23,22 @@ class NewsItem extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        const Text(
-          ' Title TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle',
+        Text(
+          articlesModel.title ?? '',
           overflow: TextOverflow.ellipsis,
           maxLines: 2,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             height: 2,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const Text(
-          'Description',
+        Text(
+          articlesModel.description ?? '',
           maxLines: 2,
           softWrap: true,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             height: 1.5,
             color: Colors.grey,
